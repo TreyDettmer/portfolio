@@ -1,1 +1,383 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* custom properties */
+
+:root {
+  --ff-primary: 'Open Sans', sans-serif;
+  --ff-secondary: 'Source Code Pro', monospace;
+
+  --fw-reg: 400;
+  --fw-bold: 600;
+
+  --clr-light: #fff;
+  --clr-dark: #303030;
+  --clr-accent: #e38c00;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0,0,0,0.25),
+        0.125em 0.125em 0.25em rgba(0,0,0,0.15);
+}
+
+
+
+@media (min-width: 964px){
+  :root {
+    --fs-h1: 7.5rem;
+    --fs-h2: 3.75rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+  margin: 0;
+}
+h1 {font-size: var(--fs-h1);}
+h2 {font-size: var(--fs-h2);}
+h3 {font-size: var(--fs-h3);}
+
+
+@media (min-width: 640px) {
+  header {
+    display: grid;
+    grid-template-areas:
+      "profile-pic page-title page-title"
+      "profile-pic page-subtitle socials";
+    background-color: var(--clr-dark);
+    grid-template-columns: .7fr 2fr .5fr;
+    grid-template-rows: 1fr .5fr;
+    grid-column-gap: 5px;
+    padding: 1em;
+  }
+
+  header div {
+
+    text-align: center;
+
+  }
+
+  .profile-img {
+    grid-area: profile-pic;
+    max-width: 300px;
+    min-width: 70px;
+    position: relative;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+
+  }
+
+  .profile-img-img {
+    box-shadow: var(--bs);
+
+  }
+  .page-title {
+    grid-area: page-title;
+    padding: 0 0 0 0;
+    display: flex;
+    color: var(--clr-light);
+    font-family: var(--ff-primary);
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .page-subtitle {
+
+    grid-column: 2 / -1;
+    grid-row: 2;
+    opacity: .8;
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-h3);
+    color: var(--clr-light);
+
+  }
+
+  .socials {
+    grid-area: socials;
+    display: grid;
+    grid-template-areas:
+      "email"
+      "social-medias";
+    position: relative;
+  }
+  .portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+    grid-gap: 1em;
+    margin:.25em 2em 3em 2em;
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 640px){
+  header {
+    display: grid;
+    grid-template-areas:
+      "page-title page-title page-title"
+      "page-subtitle page-subtitle page-subtitle"
+      "socials socials socials";
+    background-color: var(--clr-dark);
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 1fr .5fr .5fr;
+
+    grid-column-gap: 5px;
+    padding: 1em;
+  }
+
+  header div {
+
+    text-align: center;
+
+  }
+
+  .profile-img {
+    display: none;
+    /* grid-area: profile-pic;
+    max-width: 300px;
+    min-width: 70px;
+    position: relative;
+    padding: .25em;
+
+    margin: 0 0 0 0; */
+
+  }
+  .page-title {
+    grid-area: page-title;
+    padding: 0 0 0 0;
+    display: flex;
+    color: var(--clr-light);
+    font-family: var(--ff-primary);
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .page-subtitle {
+
+    grid-column: 1 / 4;
+    grid-row: 2;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    width: 100%;
+    text-align: center;
+    font-family: var(--ff-secondary);
+    font-size: var(--fs-h3);
+    color: var(--clr-light);
+
+  }
+
+  .socials {
+    grid-area: socials;
+    display: grid;
+    grid-template-areas:
+      "email"
+      "social-medias";
+    position: relative;
+
+  }
+  .socials__email {
+
+    margin: 0 auto;
+  }
+  .socials__email a {
+    padding: 0 0;
+  }
+  .socials__social-medias {
+    margin: 0 auto;
+    float: none;
+    padding: 0 0;
+  }
+
+  .portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    grid-gap: 1em;
+    margin:.25em 2em 3em 2em;
+    max-width: 100%;
+  }
+}
+
+.socials a {
+  color: var(--clr-accent);
+  text-decoration: none;
+}
+.socials a:hover {
+  opacity: .7;
+}
+.socials__email a:hover {
+  text-decoration: underline;
+}
+
+.socials__email {
+  font-family: var(--ff-secondary);
+  grid-area: email;
+  text-align: right;
+}
+.socials__email a {
+  padding: 0 .6em;
+}
+
+.socials__social-medias-list {
+  grid-area: social-medias;
+  list-style: none;
+  display:flex;
+  justify-content: center;
+  float: right;
+  padding: 0 .6em;
+  margin: 0;
+}
+
+.socials__social-medias-list__item {
+  font-size: var(--fs-h2);
+}
+
+.socials__social-medias-list__link {
+  padding: 10px;
+}
+
+.my-work {
+  background-color: var(--clr-dark);
+  background-image: url(assets/img/MountHood.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+  font-family: var(--ff-primary);
+  color: var(--clr-accent);
+  text-align: center;
+  padding: 1em;
+
+}
+
+.section-title {
+  padding: 1em;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 2em;
+  height: 1px;
+  margin: .5em auto .25em;
+  background: var(--clr-light);
+  opacity: 1;
+}
+
+
+
+
+
+
+.portfolio__item__link:focus {
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio__item__link:hover .portfolio__item__title,
+.portfolio__item__link:focus{
+  transform: translateY(-7em);
+}
+
+.portfolio__item__link:hover .portfolio__item__desc,
+.portfolio__item__link:focus{
+  opacity: 1;
+}
+
+.portfolio__item__link:hover,
+.portfolio__item__link:focus{
+  outline: 3px solid var(--clr-accent);
+  outline-offset: 3px;
+}
+
+.portfolio__item__link:hover .portfolio__img,
+.portfolio__item__link:focus{
+  filter: brightness(30%);
+}
+
+.portfolio__item__link {
+  background: transparent;
+
+  position: relative;
+
+  max-width: 100%;
+  transition:
+    transform 750ms cubic-bezier(.5,0,.5,1),
+    opacity 250ms linear;
+  display: block;
+
+}
+
+.portfolio__img {
+  filter: brightness(50%);
+  width: 100%;
+  max-width: 100%;
+}
+.portfolio__item__title__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+
+}
+.portfolio__item__title {
+  transition:
+    transform 250ms cubic-bezier(.5,0,.5,1);
+  text-align: center;
+
+  color: var(--clr-light);
+  font-weight: var(--fw-bold);
+}
+
+.portfolio__item__desc {
+  transition:
+    opacity 250ms cubic-bezier(.5,0,.5,1);
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  color: var(--clr-light);
+  font-family: var(--ff-secondary);
+  font-weight: var(--fw-reg);
+  max-width: 90%;
+  margin: 0 auto;
+  line-height: 1;
+  opacity: 0;
+  font-size: var(--fs-h3);
+}
+
+.footer {
+  background: #111;
+  color: var(--clr-accent);
+  font-family: var(--ff-secondary);
+  text-align: center;
+  padding: 1em 0;
+  font-size: var(--fs-h3);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
